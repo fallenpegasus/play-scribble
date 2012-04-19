@@ -1,0 +1,21 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+#{if listScribbles}
+    <ul>
+      #{list items:listScribbles, as:'scribble'}
+          <li>${scribble.content} <a href="@{Scribbles.delete(scribble.id)}">X</a></li>
+      #{/list}
+    </ul>
+#{/if}
+ 
+#{else}
+    <div class="empty">
+    </div>
+#{/else}
+
+<div class="enter">
+  <form action="/new" method="POST">
+    &gt; <input type="text" name="content" /> <input type="submit" value="S" />
+  </form>
+</div>
